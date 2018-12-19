@@ -1,0 +1,18 @@
+nl:
+  'true': Ja
+  'false': Nee
+
+  actions:
+    back: Terug
+    cancel: Annuleren
+    create: Toevoegen
+    delete: Verwijder
+    delete_question: Weet u zeker dat u dit wilt verwijderen?
+    edit: Bewerken
+    show: Details
+
+  placeholders:
+    search: Zoeken
+  
+  navbar:
+    home: '🎅🌲❄️'

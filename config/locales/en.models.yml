@@ -1,0 +1,15 @@
+en:
+  dictionary:
+    name: &name Name
+
+  activerecord:
+    models:
+      elf:
+        one: Elf
+        other: Elves
+
+    attributes:
+      user:
+        name: *name
+        date_of_birth: Date of birth
+        created_at: Member since

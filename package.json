@@ -1,0 +1,19 @@
+{
+  "name": "admin",
+  "private": true,
+  "scripts": {
+    "start": "docker-compose run --rm --service-ports web",
+    "rails": "docker-compose run --rm web bin/rails",
+    "bundle": "docker-compose run --rm web bundle",
+    "rspec": "docker-compose run --rm web bundle exec rspec",
+    "setup": "cp example.env .env && yarn rails db:create:all db:migrate db:seed",
+    "cap": "docker-compose run --rm web cap"
+  },
+  "dependencies": {
+    "@rails/webpacker": "3.5"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "2.11.2"
+  }
+}

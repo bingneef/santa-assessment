@@ -1,0 +1,75 @@
+version: '3.5'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      - MAX_CONNECTIONS=200
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./docker/conf/mysql:/etc/mysql/conf.d
+      - ./docker/data/mysql:/var/lib/mysql
+    ports:
+      - '13306:3306'
+
+  app: &app
+    build:
+      context: ./
+      dockerfile: ./dev.Dockerfile
+    volumes:
+      - .:/usr/src/app
+      - bundle:/bundle:cached
+      - ~/.ssh:/root/.ssh
+    environment:
+      RAILS_ENV: development
+
+  webpack:
+    <<: *app
+    command: bin/webpack-dev-server
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    ports:
+      - '3035:3035'
+
+  web:
+    <<: *app
+    command: >
+      sh -c "rm tmp/pids/server.pid 2>/dev/null;
+      bin/rails server -b 0.0.0.0"
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=webpack
+    ports:
+      - "3000:3000"
+      # - "3000:3001" # NOTE: use this if you've enabled the Appollo tracing proxy
+    depends_on:
+      - db
+      - webpack
+
+  guard: &guard
+    <<: *app
+    command: bin/guard --no-bundler-warning --no-interactions
+    environment: &selenium-envs
+      SKIP_COVERAGE: "skippy"
+      SELENIUM_HOST: "selenium"
+      SELENIUM_PORT: 4444
+      TEST_APP_HOST: "web"
+      TEST_PORT: 3000
+    depends_on:
+      - web
+      - selenium
+
+  test:
+    <<: *guard
+    command: bin/rspec spec
+    environment:
+      <<: *selenium-envs
+      SKIP_COVERAGE: null
+
+  selenium:
+    image: selenium/standalone-chrome:3.10.0-argon
+    ports:
+      - "5900:5900"
+
+volumes:
+  bundle:
+    name: sping_bundle

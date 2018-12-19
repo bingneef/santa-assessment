@@ -1,0 +1,38 @@
+!!!
+%html
+  %head
+    %title Sping Admin
+    /
+      admin
+      version: #{Rails.application.config.version} (#{l(Rails.application.config.version_time)})
+    = action_cable_meta_tag
+    = stylesheet_link_tag    'application', media: 'all'
+    /[if lt IE 9]
+      %script{src: "//cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"}
+      %script{src: "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"}
+      %script{src: "//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"}
+      %script{src: "//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"}
+    = csrf_meta_tags
+  %body{class: "#{controller.controller_name} #{@full_height_page ? 'full-height' : nil}"}
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      = link_to t('navbar.home'), root_path, class: 'navbar-brand'
+      %button.navbar-toggler(data-target='#navbarNav' data-toggle='collapse' type='button')
+        %span.navbar-toggler-icon
+
+      .collapse.navbar-collapse
+        %ul.navbar-nav.mr-auto
+          %li.nav-item{class: "#{'active' if is_active_link?(elves_path)}"}
+            = link_to Elf.model_name.human(count: 2), elves_path, class: 'nav-link'
+
+    .main-content.container-fluid
+      - flash.each do |type, msg|
+        %div{class: "alert alert-#{type == 'alert' ? 'danger' : 'success'} alert-dismissable", role: 'alert'}
+          %button.close{type: 'button', data: {dismiss: 'alert'}, aria: {label: 'Close'}}
+            %span{aria: {hidden: 'true'}} &times;
+          = msg if msg.is_a?(String)
+
+      = yield
+
+  = javascript_include_tag  'application'
+  = javascript_pack_tag     'application'
+  = yield :javascripts

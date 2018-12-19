@@ -1,0 +1,16 @@
+en:
+  'true': Yes
+  'false': No
+
+  actions:
+    back: Back
+    cancel: Cancel
+    create: Create
+    delete: Delete
+    delete_question: Are you sure you want to delete this?
+    edit: Edit
+    show: Details
+    
+  unauthorized:
+    manage:
+      all: You do not have access to this page

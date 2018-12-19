@@ -1,0 +1,17 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 25
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: db
+  variables:
+    sql_mode: TRADITIONAL
+
+development:
+  <<: *default
+  database: sping_development
+
+test:
+  <<: *default
+  database: sping_test

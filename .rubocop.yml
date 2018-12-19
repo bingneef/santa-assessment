@@ -1,0 +1,52 @@
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - bin/*
+    - Capfile
+    - app/controllers/concerns/decorate_instance_variables.rb
+    - config/boot.rb
+    - config/environment.rb
+    - config/puma.rb
+    - db/schema.rb
+    - db/seeds.rb
+    - spec/rails_helper.rb
+    - Gemfile
+    - Guardfile
+    - Rakefile
+    - config/initializers/*
+    - config/environments/*
+    - db/migrate/*
+    - lib/templates/**/*
+    - spec/factories/**/*
+    - spec/support/**/*
+
+Metrics/LineLength:
+  Exclude:
+    - config/**/*
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+Style/StringLiterals:
+  Exclude:
+    - config/application.rb
+
+Style/BlockComments:
+  Exclude:
+    - spec/spec_helper.rb
+
+Style/TrailingWhitespace:
+  Exclude:
+    - config/initializers/bower_rails.rb
+
+# Don't force documentation for classes
+Style/Documentation:
+  Enabled: false

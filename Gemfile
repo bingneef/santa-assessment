@@ -1,0 +1,96 @@
+source 'https://rubygems.org'
+ruby "2.5.0"
+
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+gem 'rails', '5.2.0'
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.2.0', require: false
+gem 'mysql2'
+gem 'sassc-rails', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.2'
+gem 'bcrypt', '~> 3.1.7'
+gem 'jquery-rails'
+gem 'webpacker'
+gem 'sprockets', '~> 3.7.1'
+
+gem 'puma', '~> 3.11'
+
+gem 'marco-polo', '>= 1.2.1'
+gem 'dotenv-rails', '>= 2.2.1'
+# gem 'airbrake', '~> 5.4'
+gem 'lograge', '~> 0.10.0'
+
+gem 'active_decorator'
+gem 'active_model_serializers', '~> 0.10'
+gem 'rails-i18n', '~> 5.1.0'
+gem 'haml-rails', '~> 1.0'
+gem 'responders', '~> 2.4.0'
+gem 'email_validator'
+gem 'recipient_interceptor'
+
+gem 'font-awesome-rails', '~> 4.7.0.2'
+
+gem 'redis', '~> 4.0.1'
+gem 'redis-namespace', '~> 1.6.0'
+gem 'readthis', '~> 2.2'
+gem 'hiredis', '~> 0.6.1'
+
+# variant: twitter-bootstrap
+gem 'bootstrap', '~> 4.1.3'
+gem 'autoprefixer-rails', '~> 7.2.4'
+gem 'bootstrap_form', '>= 4.0.0.alpha1'
+gem 'nested_form', '~> 0.3.2'
+gem 'active_link_to', '~> 1.0.5'
+
+# variant: ransack-kaminari
+gem 'ransack', '~> 1.8.4'
+gem 'kaminari', '~> 1.1.1'
+gem 'bootstrap4-kaminari-views'
+
+gem 'cancancan', '~> 2.0'
+
+group :development, :test do
+  gem 'byebug'
+  gem 'pry-byebug'
+  gem 'letter_opener'
+  gem 'bullet'
+  gem 'unique_validation_inspector'
+  gem 'database_cleaner'
+  gem 'coderay'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'fuubar'
+  gem 'factory_bot_rails', '~> 4.10.0'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'simplecov'
+  gem 'simplecov-console'
+
+  gem 'capybara', '~> 2.15'
+  # selenium-webdriver & chromedriver-helper used by
+  # JavaScript-dependent feature specs (`js: true`):
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+end
+
+group :development do
+  gem 'capistrano', '~> 3.11'
+  gem 'capistrano-rbenv', '~> 2.1.3'
+  gem 'capistrano-bundler', '~> 1.3.0'
+  gem 'capistrano-rails', '~> 1.4.0'
+  gem 'capistrano-bundle_audit', '~> 0.2.1', require: false
+  gem 'capistrano-db-tasks', '~> 0.6', require: false
+  gem 'capistrano-rails-console', '~> 2.3.0'
+  gem 'airbrussh', '~> 1.3.0', require: false
+
+  gem 'foreman', '~> 0.84'
+  gem 'listen', '~> 3.1.5'
+  gem 'better_errors', '~> 2.4.0'
+  gem 'binding_of_caller', '~> 0.8.0'
+  gem 'rails-erd', '~> 1.5.2'
+  gem 'awesome_print', '1.8.0'
+  gem 'brakeman', '~> 4.3.1', require: false
+  gem 'rubocop', require: false
+end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
