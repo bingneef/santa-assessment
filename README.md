@@ -1,6 +1,6 @@
 # admin
 
-This is a Rails 5.2.0 app.
+This is a Rails 5.2.1.1 app.
 
 ## Documentation
 
@@ -10,6 +10,8 @@ This is a Rails 5.2.0 app.
 
 This project requires:
 
+* Docker
+or
 * Ruby 2.5.0, preferably managed using [rbenv][]
 * MySQL must be installed and accepting connections
 
@@ -17,17 +19,15 @@ This project requires:
 
 ### bin/setup
 
-Run the `bin/setup` script. This script will:
+Run the `yarn setup:docker or yarn setup` script. This script will:
 
-* Check you have the required Ruby version
-* Install gems using Bundler
 * Create local copies of `.env`
 * Create, migrate, and seed the database
 
 ### Run it!
 
-1. Run `rspec spec` to make sure everything works.
-2. Run `foreman start` to start the Rails app (and other dependent processes if present).
+1. Run `yarn rspec spec` or `rspec spec` to make sure everything works.
+2. Run `yarn start` or `foreman start` to start the Rails app (and other dependent processes if present).
 
 [rbenv]:https://github.com/sstephenson/rbenv
 
@@ -43,7 +43,7 @@ bin/rake erd
 
 ## Tests
 
-Running `rspec spec` will run all the tests and outputs a coverage report to `coverage/index.html`
+Running `yarn rspec spec` or `rspec spec` will run all the tests and outputs a coverage report to `coverage/index.html`
 
 ## Metrics/code style/other handy commands
 

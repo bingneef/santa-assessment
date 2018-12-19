@@ -25,29 +25,20 @@ class ElvesController < ApplicationController
 
   def create
     @elf = Elf.new(elf_params)
-
-    if @elf.save
-      respond_with @elf
-    else
-      respond_with @elf
-    end
+    @elf.save
+    respond_with @elf
   end
 
   def update
-    if @elf.update(elf_params)
-    else
-    end
-
-    redirect_to action: "index"
+    @elf = Elf.find params[:id]
+    @elf.update(elf_params)
+    respond_with @elf
   end
 
   def destroy
-    if @elf.destroy
-      flash[:notice] = t('success')
-      redirect_to :index
-    else
-      respond_with @elf
-    end
+    @elf = Elf.find params[:id]
+    @elf.destroy
+    respond_with @elf
   end
 
   private

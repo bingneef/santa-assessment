@@ -3,7 +3,7 @@ ruby "2.5.0"
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '5.2.0'
+gem 'rails', '5.2.1.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.2.0', require: false
 gem 'mysql2'
@@ -44,7 +44,7 @@ gem 'nested_form', '~> 0.3.2'
 gem 'active_link_to', '~> 1.0.5'
 
 # variant: ransack-kaminari
-gem 'ransack', '~> 1.8.4'
+gem 'ransack', '~> 2.1.1'
 gem 'kaminari', '~> 1.1.1'
 gem 'bootstrap4-kaminari-views'
 

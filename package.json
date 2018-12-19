@@ -6,7 +6,8 @@
     "rails": "docker-compose run --rm web bin/rails",
     "bundle": "docker-compose run --rm web bundle",
     "rspec": "docker-compose run --rm web bundle exec rspec",
-    "setup": "cp example.env .env && yarn rails db:create:all db:migrate db:seed",
+    "setup": "cp example.env .env && bin/rails db:create db:migrate db:seed",
+    "setup:docker": "cp example.env .env && yarn rails db:create db:migrate db:seed",
     "cap": "docker-compose run --rm web cap"
   },
   "dependencies": {
