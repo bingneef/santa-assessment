@@ -1,4 +1,4 @@
-# admin
+# Santa Admin
 
 This is a Rails 5.2.1.1 app.
 
@@ -19,7 +19,7 @@ or
 
 ### bin/setup
 
-Run the `yarn setup:docker or yarn setup` script. This script will:
+Run the `yarn setup:docker` or `yarn setup` script. This script will:
 
 * Create local copies of `.env`
 * Create, migrate, and seed the database
